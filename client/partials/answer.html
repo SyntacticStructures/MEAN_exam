@@ -1,0 +1,13 @@
+<div ng-init="qc.getUser()">
+	<style>
+	textarea.ng-invalid.ng-dirty{border: 3px solid red}
+	</style>
+	<h2>Your question:</h2>
+	<p ng-bind="qc.current_question.content"></p>
+	<h2>Your answer:</h2>
+	<form name="new_answer">
+		<label>answer: <textarea name="answer" ng-model='qc.new_answer.content' required ng-minlength="5"></textarea></label>
+		<label>your reasoning: <textarea ng-model="qc.new_answer.description"></textarea></label>
+		<input ng-disabled="qc.new_answer.$invalid" type="submit" ng-click='qc.addAnswer(qc.current_question, qc.current_user)'>
+	</form>
+</div>

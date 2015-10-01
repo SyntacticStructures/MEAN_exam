@@ -1,0 +1,11 @@
+<table ng-init="qc.addUser()">
+	<input type="text" ng-model="filter_name" placeholder="filter">
+	<tr ng-repeat='question in qc.questions | orderBy: "-created_at" | filter: filter_name'> <!-- fix order by -->
+		<td ng-bind="question.content"></td>
+		<td ng-bind="question.answers.length"></td>
+		<td>{{question.created_at | date: 'MM/dd/yyyy'}}</td>
+		<td><a href='' ng-click='qc.show_one(question)'>Show</a></td>
+		<td><a href='' ng-click='qc.answer(question)'>Answer</a></td>
+		<td ng-if="qc.current_user == question.user"><button ng-click="qc.deleteQuestion(question._id)">Delete</button></td>
+	</tr>
+</table>

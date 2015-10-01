@@ -1,0 +1,13 @@
+<div ng-init="qc.getUser()">
+	{{qc.current_user}} is logged in
+	<style>
+	input.ng-invalid.ng-dirty{border: 1px solid red}
+	</style>
+	<form name='new_question'>
+		<label>question: <textarea name="name" ng-model='qc.new_question.question' required ng-minlength="10"></textarea></label>
+		<span ng-show='new_question.name.$dirty && new_question.name.$error.required'>Required!</span>
+		<span ng-show='new_question.name.$dirty && new_question.name.$error.minlength'>Too Short, question must be at least 10 charactrs!</span>
+		<label>description: <textarea type="text" name="description" ng-model='qc.new_question.description'></textarea></label>
+		<input ng-disabled="new_question.$invalid" type="submit" ng-click='qc.addQuestion(qc.current_user)'>
+	</form>
+</div>

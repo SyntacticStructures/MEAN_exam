@@ -1,0 +1,9 @@
+<p ng-bind="qc.current_question.content" ng-init="qc.getUser()"></p>
+<ul ng-repeat='answers in qc.current_question.answers | orderBy:"-votes"'>
+	<li ng-bind='answers.content'></li>
+	<li ng-bind='answers.description'></li>
+	<li ng-show='answers.votes > -1'> {{answers.votes}} likes</li>
+	<li ng-hide='answers.votes > -1'>0 likes</li>
+	<li ng-bind='answers.user'></li>
+	<button ng-click="qc.vote(qc.current_question, answers)">Like!</button>
+</ul>
